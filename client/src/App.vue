@@ -1,6 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <vs-sidebar
+      static-position
+      default-index="1"
+      color="primary"
+      class="sidebarx"
+      spacer>
+      <vs-sidebar-item to="/addData" index="1">
+        Add Data
+      </vs-sidebar-item>
+      <vs-sidebar-item to="/logs" index="2">
+        Logs
+      </vs-sidebar-item>
+      <vs-sidebar-item to="/data" index="3">
+        Data
+      </vs-sidebar-item>
+    </vs-sidebar>
     <router-view/>
   </div>
 </template>
@@ -18,6 +33,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
