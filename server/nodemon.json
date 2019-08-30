@@ -1,0 +1,6 @@
+{
+  "ignore": ["node_modules", "public"],
+  "verbose": false,
+  "watch": ["src", "config"],
+  "ext": "js json"
+}

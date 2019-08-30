@@ -1,0 +1,25 @@
+{
+  "name": "cloud-console-test-server",
+  "version": "1.0.0",
+  "description": "Server for CloudConsole test",
+  "author": "Artem Arefiev <a.arefiev@inbox.ru>",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/start",
+    "dev": "nodemon --inspect --exec 'node -r dotenv/config' ./bin/start",
+    "lint": "eslint --ext .js config src"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  }
+}
