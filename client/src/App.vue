@@ -1,37 +1,29 @@
 <template>
   <div id="app">
-    <vs-sidebar
-      static-position
-      default-index="1"
-      color="primary"
-      class="sidebarx"
-      spacer>
-      <vs-sidebar-item to="/addData" index="1">
-        Add Data
-      </vs-sidebar-item>
-      <vs-sidebar-item to="/logs" index="2">
-        Logs
-      </vs-sidebar-item>
-      <vs-sidebar-item to="/data" index="3">
-        Data
-      </vs-sidebar-item>
-    </vs-sidebar>
-    <router-view/>
+    <default-layout>
+      <router-view/>
+    </default-layout>
   </div>
 </template>
 
 <script>
+import DefaultLayout from '@/layouts/Default';
+
 export default {
   name: 'App',
+  components: {
+    DefaultLayout,
+  },
 };
 </script>
 
 <style>
 #app {
+  font-size: 15px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
 }
 </style>

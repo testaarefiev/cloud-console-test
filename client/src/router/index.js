@@ -10,22 +10,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      redirect: '/addData',
+      name: 'Home',
+      redirect: 'addData',
     },
     {
       path: '/addData',
-      name: 'adddata',
+      name: 'AddData',
       component: AddDataPage,
     },
     {
       path: '/logs',
-      name: 'logs',
+      name: 'Logs',
       component: LogsPage,
     },
     {
       path: '/data',
-      name: 'data',
+      name: 'Data',
       component: DataPage,
     },
   ],
