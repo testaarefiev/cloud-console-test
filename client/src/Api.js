@@ -36,8 +36,13 @@ export function getLogs() {
   return processRequest('get', '/logs', {}, 'Obtaining logs failed');
 }
 
+export function getAllData() {
+  return processRequest('get', '/data', {}, 'Obtaining data failed');
+}
+
 export default {
   createLog,
   createData,
   getLogs,
+  getAllData,
 };

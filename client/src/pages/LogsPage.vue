@@ -13,8 +13,8 @@
 
       <template slot-scope="{data}">
         <vs-tr :key="indextr" v-for="(tr, indextr) in data">
-          <vs-td :data="data[indextr].name">
-            {{data[indextr].name}}
+          <vs-td :data="data[indextr].type">
+            {{data[indextr].type}}
           </vs-td>
 
           <vs-td :data="data[indextr].createdAt">
@@ -34,8 +34,9 @@ export default {
   name: 'LogsPage',
   beforeMount() {
     getLogs().then((error, data) => {
-      if (error) showErrorNotification(this.$vs, error);
+      if (error) return showErrorNotification(this.$vs, error);
       this.events = data.events;
+      return true;
     });
   },
   data() {
