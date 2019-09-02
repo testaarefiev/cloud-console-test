@@ -21,7 +21,7 @@ export default {
   components: {
     SideBar,
   },
-  beforeMount: function beforeMount() {
+  beforeMount() {
     const routeIndex = sidebarItems.findIndex(r => r.path === this.$route.path);
     this.sidebarSelectedItemIndex = routeIndex;
   },
