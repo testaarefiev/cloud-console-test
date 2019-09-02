@@ -1,6 +1,6 @@
 <template>
   <div>
-    <side-bar v-bind:items="sidebarItems" />
+    <side-bar v-bind:items="sidebarItems" v-bind:selected-index="sidebarSelectedItemIndex" />
     <div class="container">
       <div class="content">
         <slot />
@@ -21,8 +21,13 @@ export default {
   components: {
     SideBar,
   },
+  beforeMount: function beforeMount() {
+    const routeIndex = sidebarItems.findIndex(r => r.path === this.$route.path);
+    this.sidebarSelectedItemIndex = routeIndex;
+  },
   data: () => ({
     sidebarItems,
+    sidebarSelectedItemIndex: 0,
   }),
 };
 </script>

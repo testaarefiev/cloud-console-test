@@ -1,7 +1,7 @@
 <template>
   <vs-sidebar
     static-position
-    v-bind:default-index="0"
+    v-bind:default-index="selectedIndex"
     color="primary"
     class="sidebarx"
     spacer
@@ -24,6 +24,7 @@ export default {
   name: 'SideBar',
   props: {
     items: { type: Array },
+    selectedIndex: { type: Number, default: 0 },
   },
 };
 </script>
