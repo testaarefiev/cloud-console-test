@@ -24,16 +24,20 @@ function processRequest(method, route, params, errorMessage = '') {
   });
 }
 
-function createLog(type = 'login') {
+export function createLog(type = 'login') {
   return processRequest('put', '/logs', { type, createdAt: new Date() }, 'Log creation failed');
 }
 
-function createData(title, text) {
+export function createData(title, text) {
   return processRequest('put', '/data', { title, text, createdAt: new Date() }, 'Data creation failed');
+}
+
+export function getLogs() {
+  return processRequest('get', '/logs', {}, 'Obtaining logs failed');
 }
 
 export default {
   createLog,
   createData,
+  getLogs,
 };
-export { createLog, createData };

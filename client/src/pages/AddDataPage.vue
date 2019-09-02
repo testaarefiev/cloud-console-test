@@ -27,24 +27,7 @@
 <script>
 import { createLog, createData } from '@/Api';
 import { required, minLength } from 'vuelidate/lib/validators';
-
-function showErrorNotification(error) {
-  return this.$vs.notify({
-    title: 'Error',
-    text: error,
-    position: 'top-right',
-    color: 'danger',
-  });
-}
-
-function showSuccessNotification(text) {
-  return this.$vs.notify({
-    title: 'Success',
-    text,
-    position: 'top-right',
-    color: 'success',
-  });
-}
+import { showErrorNotification, showSuccessNotification } from './vsNotifications';
 
 export default {
   name: 'AddDataPage',
@@ -53,7 +36,7 @@ export default {
     this.logged = true;
 
     createLog('login').then((error) => {
-      if (error) return showErrorNotification.call(this, error);
+      if (error) return showErrorNotification(this.$vs, error);
       return true;
     });
   },
@@ -83,14 +66,14 @@ export default {
 
       // Send data
       createLog('dataAdded').then((error) => {
-        if (error) return showErrorNotification.call(this, error);
+        if (error) return showErrorNotification(this.$vs, error);
         return true;
       });
       createData(this.title, this.text).then((error) => {
         // Unlock the button at first because problem can be already fixed
         this.submitDisabled = false;
 
-        if (error) return showErrorNotification.call(this, error);
+        if (error) return showErrorNotification(this.$vs, error);
         showSuccessNotification.call(this, 'Data sucessfully created');
 
         // Reset form
