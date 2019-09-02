@@ -4,7 +4,7 @@ const config = require('../../../config');
 const router = express.Router();
 
 module.exports = (redisClient) => {
-  const key = `${config.redis.prefix}:logs`;
+  const key = `${config.redis.prefix}:data`;
 
   router.put('/', (req, res) => {
     const serverCreatedAt = new Date();
@@ -18,8 +18,8 @@ module.exports = (redisClient) => {
   router.get('/', (req, res) => {
     redisClient.zrangebyscore(key, '-inf', '+inf', (err, members) => {
       if (err !== null) return res.status(500);
-      const logs = members.map(m => JSON.parse(m));
-      res.json({ logs });
+      const allData = members.map(m => JSON.parse(m));
+      res.json({ allData });
     });
   });
 

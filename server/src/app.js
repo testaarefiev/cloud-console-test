@@ -17,5 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/api/logs', require('./routes/api/logs')(redisClient));
+app.use('/api/data', require('./routes/api/data')(redisClient));
 
 module.exports = app;
