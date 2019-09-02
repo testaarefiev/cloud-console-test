@@ -12,12 +12,14 @@ const createLogLogin = () => createLog('login');
 
 export default {
   name: 'AddDataPage',
-  mounted: () => {
+  created: () => {
+    if (this.logged) return;
+    this.logged = true;
+
     createLogLogin();
   },
-  data() {
-    return {
-    };
-  },
+  data: () => ({
+    logged: false,
+  }),
 };
 </script>
