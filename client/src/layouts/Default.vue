@@ -35,4 +35,7 @@ export default {
 .content {
   padding: 0 2rem;
 }
+h1 {
+  padding: 3rem 0 1rem;
+}
 </style>

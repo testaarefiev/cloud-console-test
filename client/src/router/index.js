@@ -14,11 +14,6 @@ export default new Router({
       redirect: 'addData',
     },
     {
-      path: '/addData',
-      name: 'AddData',
-      component: AddDataPage,
-    },
-    {
       path: '/logs',
       name: 'Logs',
       component: LogsPage,
@@ -27,6 +22,11 @@ export default new Router({
       path: '/data',
       name: 'Data',
       component: DataPage,
+    },
+    {
+      path: '/addData',
+      name: 'AddData',
+      component: AddDataPage,
     },
   ],
 });
