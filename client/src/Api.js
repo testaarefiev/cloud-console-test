@@ -13,13 +13,13 @@ const instance = axios.create({
 function processRequest(method, route, params, errorMessage = '') {
   return new Promise((resolve) => {
     instance[method].call(this, route, params)
-      .then(data => resolve(null, data))
+      .then(data => resolve({ error: null, data: data.data }))
       .catch((e) => {
         if (errorMessage === '') {
           return resolve(e.message);
         }
         const error = new Error(`${errorMessage}: ${e.message}`);
-        return resolve(error.message);
+        return resolve({ error: error.message });
       });
   });
 }

@@ -33,7 +33,7 @@ import { showErrorNotification } from './vsNotifications';
 export default {
   name: 'DataPage',
   beforeMount() {
-    getAllData().then((error, data) => {
+    getAllData().then(({ error, data }) => {
       if (error) return showErrorNotification(this.$vs, error);
       this.allData = data.allData;
       return true;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Logs</h1>
-    <vs-table stripe :data="events">
+    <vs-table stripe :data="logs">
       <template slot="thead">
         <vs-th>
           Event
@@ -33,15 +33,15 @@ import { showErrorNotification } from './vsNotifications';
 export default {
   name: 'LogsPage',
   beforeMount() {
-    getLogs().then((error, data) => {
+    getLogs().then(({ error, data }) => {
       if (error) return showErrorNotification(this.$vs, error);
-      this.events = data.events;
+      this.logs = data.logs;
       return true;
     });
   },
   data() {
     return {
-      events: [],
+      logs: [],
     };
   },
 };

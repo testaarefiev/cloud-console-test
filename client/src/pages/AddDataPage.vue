@@ -35,7 +35,7 @@ export default {
     if (this.logged) return;
     this.logged = true;
 
-    createLog('login').then((error) => {
+    createLog('login').then(({ error }) => {
       if (error) return showErrorNotification(this.$vs, error);
       return true;
     });
@@ -65,11 +65,11 @@ export default {
       this.submitDisabled = true;
 
       // Send data
-      createLog('dataAdded').then((error) => {
+      createLog('dataAdded').then(({ error }) => {
         if (error) return showErrorNotification(this.$vs, error);
         return true;
       });
-      createData(this.title, this.text).then((error) => {
+      createData(this.title, this.text).then(({ error }) => {
         // Unlock the button at first because problem can be already fixed
         this.submitDisabled = false;
 
