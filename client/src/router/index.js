@@ -28,5 +28,9 @@ export default new Router({
       name: 'AddData',
       component: AddDataPage,
     },
+    {
+      path: '*',
+      redirect: 'addData',
+    },
   ],
 });

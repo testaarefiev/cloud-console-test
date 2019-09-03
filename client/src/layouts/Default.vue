@@ -38,7 +38,7 @@ export default {
   overflow: hidden;
 }
 .content {
-  padding: 0 2rem;
+  padding: 0 2rem 2rem;
 }
 h1 {
   padding: 3rem 0 1rem;
