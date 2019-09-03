@@ -74,7 +74,7 @@ export default {
         this.submitDisabled = false;
 
         if (error) return showErrorNotification(this.$vs, error);
-        showSuccessNotification.call(this, 'Data sucessfully created');
+        showSuccessNotification(this.$vs, 'Data sucessfully created');
 
         // Reset form
         this.$v.$reset();
