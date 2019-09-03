@@ -1,3 +1,5 @@
+const path = require('path');
+
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -24,4 +26,5 @@ module.exports = {
     uri: process.env.REDIS_URI || 'redis://localhost:6379',
     prefix: 'cloud-console',
   },
+  staticDirectory: path.join(__dirname, '../public'),
 };
