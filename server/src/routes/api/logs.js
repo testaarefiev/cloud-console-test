@@ -7,19 +7,21 @@ module.exports = (redisClient) => {
   const key = `${config.redis.prefix}:logs`;
 
   router.put('/', (req, res) => {
-    const serverCreatedAt = new Date();
-    const data = { ...req.body, serverCreatedAt };
-    redisClient.zadd(key, serverCreatedAt.getTime(), JSON.stringify(data), (err) => {
+    const data = {
+      serverCreatedAt: new Date(),
+    };
+    Object.assign(data, req.body);
+    redisClient.zadd(key, data.serverCreatedAt.getTime(), JSON.stringify(data), (err) => {
       if (err !== null) return res.status(500);
-      res.sendStatus(200);
+      return res.sendStatus(200);
     });
   });
 
   router.get('/', (req, res) => {
     redisClient.zrangebyscore(key, '-inf', '+inf', (err, members) => {
       if (err !== null) return res.status(500);
-      const logs = members.map(m => JSON.parse(m));
-      res.json({ logs });
+      const logs = members.map((m) => JSON.parse(m));
+      return res.json({ logs });
     });
   });
 
