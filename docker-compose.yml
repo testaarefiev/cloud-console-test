@@ -1,0 +1,36 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    restart: always
+    networks:
+      - webnet
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+    environment:
+      API_URL: http://server:3000
+    depends_on:
+      - server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+    environment:
+      REDIS_URI: redis://redis:6379
+    command: ["yarn", "start"]
+    depends_on:
+     - redis
+networks:
+  webnet:
