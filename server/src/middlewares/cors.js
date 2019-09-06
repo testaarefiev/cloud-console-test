@@ -1,7 +1,8 @@
 const cors = require('cors');
+const config = require('../../config');
 
 const corsOptions = {
-  origin: '*',
+  origin: config.cors.origin,
   optionsSuccessStatus: 200,
 };
 

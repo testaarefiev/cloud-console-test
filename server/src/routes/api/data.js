@@ -5,6 +5,8 @@ const config = require('../../../config');
 const router = express.Router();
 const key = `${config.redis.prefix}:data`;
 
+router.options('/', corsMiddleware);
+
 router.put('/', corsMiddleware, (req, res) => {
   const redisClient = req.app.store;
   const data = {

@@ -24,6 +24,9 @@ const redisKeyPrefix = process.env.NODE_ENV === 'test' ? 'cloud-console-test' : 
 
 module.exports = {
   port: normalizePort(process.env.PORT || '3000'),
+  cors: {
+    origin: process.env.CORS_ORIGIN || '*',
+  },
   redis: {
     uri: process.env.REDIS_URI || 'redis://localhost:6379',
     prefix: redisKeyPrefix,
