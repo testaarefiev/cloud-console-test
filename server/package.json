@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node ./bin/start",
     "dev": "nodemon --inspect --exec 'node -r dotenv/config' ./bin/start",
-    "lint": "eslint --ext .js config src"
+    "lint": "eslint --ext .js config src",
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,13 +16,16 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",
     "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.1"
   }
 }
