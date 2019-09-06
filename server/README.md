@@ -17,6 +17,8 @@ DEBUG=server:* yarn dev
 # serve production version
 yarn start
 
+# run tests
+yarn test
 ```
 
 (!) Requires installed and running Redis server (server connecting to `redis://localhost:6379` by default).
