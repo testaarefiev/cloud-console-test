@@ -20,11 +20,13 @@ function normalizePort(val) {
   return false;
 }
 
+const redisKeyPrefix = process.env.NODE_ENV === 'test' ? 'cloud-console-test' : 'cloud-console';
+
 module.exports = {
   port: normalizePort(process.env.PORT || '3000'),
   redis: {
     uri: process.env.REDIS_URI || 'redis://localhost:6379',
-    prefix: 'cloud-console',
+    prefix: redisKeyPrefix,
   },
   staticDirectory: path.join(__dirname, '../public'),
 };
