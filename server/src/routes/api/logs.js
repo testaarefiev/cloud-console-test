@@ -1,4 +1,5 @@
 const express = require('express');
+const corsMiddleware = require('../../middlewares/cors');
 const config = require('../../../config');
 
 const router = express.Router();
@@ -6,7 +7,7 @@ const router = express.Router();
 module.exports = (redisClient) => {
   const key = `${config.redis.prefix}:logs`;
 
-  router.put('/', (req, res) => {
+  router.put('/', corsMiddleware, (req, res) => {
     const data = {
       serverCreatedAt: new Date(),
     };
@@ -17,7 +18,7 @@ module.exports = (redisClient) => {
     });
   });
 
-  router.get('/', (req, res) => {
+  router.get('/', corsMiddleware, (req, res) => {
     redisClient.zrangebyscore(key, '-inf', '+inf', (err, members) => {
       if (err !== null) return res.status(500);
       const logs = members.map((m) => JSON.parse(m));
