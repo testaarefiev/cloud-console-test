@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Data</h1>
-    <vs-table stripe :data="allData">
+    <vs-table max-items="20" pagination stripe :data="allData">
       <template slot="thead">
         <vs-th>
           Title
@@ -32,17 +32,22 @@ import { showErrorNotification } from './vsNotifications';
 
 export default {
   name: 'DataPage',
-  beforeMount() {
-    getAllData().then(({ error, data }) => {
-      if (error) return showErrorNotification(this.$vs, error);
-      this.allData = data.allData;
-      return true;
-    });
-  },
   data() {
     return {
       allData: [],
     };
+  },
+  mounted() {
+    this.getAllData();
+  },
+  methods: {
+    getAllData() {
+      getAllData().then(({ error, data }) => {
+        if (error) return showErrorNotification(this.$vs, error);
+        this.allData = data.allData;
+        return true;
+      });
+    },
   },
 };
 </script>

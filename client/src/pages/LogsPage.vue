@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Logs</h1>
-    <vs-table stripe :data="logs">
+    <vs-table max-items="20" pagination stripe :data="logs">
       <template slot="thead">
         <vs-th>
           Event
@@ -32,17 +32,22 @@ import { showErrorNotification } from './vsNotifications';
 
 export default {
   name: 'LogsPage',
-  beforeMount() {
-    getLogs().then(({ error, data }) => {
-      if (error) return showErrorNotification(this.$vs, error);
-      this.logs = data.logs;
-      return true;
-    });
-  },
   data() {
     return {
       logs: [],
     };
+  },
+  mounted() {
+    this.getLogs();
+  },
+  methods: {
+    getLogs() {
+      getLogs().then(({ error, data }) => {
+        if (error) return showErrorNotification(this.$vs, error);
+        this.logs = data.logs;
+        return true;
+      });
+    },
   },
 };
 </script>
